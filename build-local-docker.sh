@@ -38,7 +38,7 @@ docker build base/images/$PHP_VERSION-$SERVER -t prestashop/base:$PHP_VERSION-$S
 echo Building PrestaShop image for version $PS_VERSION
 docker build images/$PS_VERSION/$PHP_VERSION-$SERVER -t prestashop/prestashop:$PS_VERSION-$PHP_VERSION-$SERVER
 
-if [ $LAUNCH == 'true' ]; then
+if [ "$LAUNCH" = 'true' ]; then
   echo Launching docker container with docker compose
   PS_VERSION=$PS_VERSION PHP_VERSION=$PHP_VERSION SERVER=$SERVER docker compose -f images/docker-compose.yml up
 fi
